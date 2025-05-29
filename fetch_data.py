@@ -1,4 +1,7 @@
 import requests
+import csv
+from datetime import datetime
+
 
 API_KEY = ""
 while True:
@@ -24,6 +27,13 @@ while True:
             print(f"Weather: {weather_desc}")
             print(f"Humidity: {humidity}%")
 
+            # save data in csv 
+            captured_time = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+            with open(f'weather_data_{captured_time}.csv', mode='a', newline='') as file:
+                writer = csv.writer(file)
+                writer.writerow([city, temp, weather_desc, humidity])
+            print("Weather data saved to weather_data.csv")
+
             # providing suggestions based on weather conditions
             if "rain" in weather_desc.lower():
                 print("💧 Take an umbrella!")
@@ -31,7 +41,7 @@ while True:
                 print("🔥 Stay hydrated!")
             if temp < 5:
                 print("❄️ Wear warm clothes!")
-
+                
             # asking user if they want to continue
             if input("Do you want to continue? (yes/no): ").lower() == 'yes':
                 continue
