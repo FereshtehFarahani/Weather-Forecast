@@ -30,8 +30,8 @@ def fetch_data():
 
                 # save data in csv 
                 captured_time = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-                file_exists = os.path.isfile('weather_log.csv')
-                with open('weather_log.csv', mode='a', newline='') as file:
+                file_exists = os.path.isfile('data/weather_log.csv')
+                with open('data/weather_log.csv', mode='a', newline='') as file:
                     writer = csv.writer(file)
                     if not file_exists:
                         writer.writerow(["timestamp", "city", "temperature", "weather_description", "humidity"])
