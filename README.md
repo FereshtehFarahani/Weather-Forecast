@@ -18,6 +18,7 @@ User-friendly command-line interface
 
 This is the CLI version of a planned multi-phase project. Future versions will include a GUI and a web app interface using tools like tkinter, Flask, or Streamlit. -->
 
+
 weather-dashboard/
 │
 ├── scripts/
@@ -29,4 +30,8 @@ weather-dashboard/
 │
 ├── README.md
 └── requirements.txt
+
+<pre lang="markdown"> ```bash pip install -r requirements.txt ``` </pre>
+
+
 
