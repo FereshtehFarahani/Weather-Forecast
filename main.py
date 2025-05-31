@@ -1,4 +1,5 @@
 from fetch_data import fetch_data
+from process_data import process_data
 
 def main():
     while True:
@@ -9,5 +10,7 @@ def main():
             print("Exiting the program.")
             break
 
+
 if __name__ == "__main__":
-    main()
+    process_data('data/weather_log.csv')
+
