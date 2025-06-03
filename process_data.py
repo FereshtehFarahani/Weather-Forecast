@@ -12,8 +12,15 @@ def process_data(file_path):
     df.dropna(inplace=True)  # or fillna if preferred
 
     # Step 3: aggregate data
-    df.drop_duplicates(inplace=True)
-    df.dropna(inplace=True)  # or fillna if preferred
+    df = df.groupby(['date', 'city']).agg({
+        'temperature': 'mean',
+        'humidity': 'mean',
+        'weather_description': lambda x: ', '.join(x.unique())
+    }).reset_index()
+
+    # Round numeric columns
+    df['temperature'] = df['temperature'].round(2)
+    df['humidity'] = df['humidity'].round(2)
 
     # Step 4: Save cleaned data
     df.to_csv("cleaned_data.csv", index=False)
